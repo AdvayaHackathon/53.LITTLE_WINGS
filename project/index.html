@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Tourism Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-container">
+                <h1>AI Tourism</h1>
+                <p>Discover with AI</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#" class="active"><i class="fas fa-compass"></i> Explore</a></li>
+                    <li><a href="trip_planner.html"><i class="fas fa-route"></i> Trip Planner</a></li>
+                    <li><a href="chat_assistant.html"><i class="fas fa-comments"></i> Chat Assistant</a></li>
+                    <li><a href="hidden_gems.html"><i class="fas fa-gem"></i> Hidden Gems</a></li>
+                    <li><a href="local_guides.html"><i class="fas fa-user-friends"></i> Local Guides</a></li>
+                    <li><a href="#saved-places"><i class="fas fa-bookmark"></i> Saved Places</a></li>
+                </ul>
+            </nav>
+            <div class="translator-container">
+                <div class="translator-circle">
+                    <i class="fas fa-language"></i>
+                </div>
+                <p>Translator</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navigation Bar -->
+            <nav class="top-nav">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search for destinations, experiences...">
+                </div>
+                <div class="user-actions">
+                    <button class="create-trip-btn"><i class="fas fa-plus"></i> Create Trip</button>
+                    <div class="user-profile">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User Profile">
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="location-title" id="currentLocation">
+                    <h2>Kyoto, Japan</h2>
+                    <p>Experience ancient traditions in a modern world</p>
+                </div>
+                <div class="video-container">
+                    <video autoplay muted loop id="heroVideo">
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-traditional-japanese-gardens-5332-large.mp4" type="video/mp4">
+                    </video>
+                    <div class="video-controls">
+                        <button class="video-nav prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="video-nav next"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Map Search Section -->
+            <section class="map-search-section">
+                <h2>Discover Your Next Adventure</h2>
+                <div class="map-search-container">
+                    <div class="map-container" id="map"></div>
+                    <div class="location-details">
+                        <div class="location-info">
+                            <h3>Selected Location</h3>
+                            <p id="locationDescription">Select a location on the map to see details</p>
+                        </div>
+                        <div class="upcoming-events">
+                            <h3>Upcoming Events</h3>
+                            <div class="events-slider" id="eventsSlider">
+                                <!-- Events will be dynamically added here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Recommendation Section -->
+            <section class="ai-recommendation-section">
+                <div class="section-header">
+                    <h2>AI-Powered Recommendations</h2>
+                    <p>Personalized suggestions based on your preferences</p>
+                </div>
+                <div class="recommendation-container">
+                    <div class="recommendation-form">
+                        <h3>Get Personalized Recommendations</h3>
+                        <div class="form-group">
+                            <label for="destination">Destination</label>
+                            <input type="text" id="destination" placeholder="Where are you going?">
+                        </div>
+                        <div class="form-group">
+                            <label>Travel Style</label>
+                            <div class="preference-tags">
+                                <button class="pref-tag" data-pref="cultural">Cultural</button>
+                                <button class="pref-tag" data-pref="nature">Nature</button>
+                                <button class="pref-tag" data-pref="food">Food</button>
+                                <button class="pref-tag" data-pref="adventure">Adventure</button>
+                                <button class="pref-tag" data-pref="relaxation">Relaxation</button>
+                                <button class="pref-tag" data-pref="budget">Budget</button>
+                                <button class="pref-tag" data-pref="luxury">Luxury</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="travelDuration">Duration (days)</label>
+                            <input type="number" id="travelDuration" min="1" max="30" value="3">
+                        </div>
+                        <button id="getRecommendations" class="recommend-btn">Get AI Recommendations</button>
+                    </div>
+                    <div class="recommendation-results" id="recommendationResults">
+                        <div class="empty-state">
+                            <i class="fas fa-robot"></i>
+                            <p>Fill in your preferences and click "Get AI Recommendations" to see personalized suggestions</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hidden Gems Section -->
+            <section class="hidden-gems-section">
+                <div class="section-header">
+                    <h2>Explore Hidden Secrets</h2>
+                    <a href="hidden_gems.html" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="gems-container" id="hiddenGems">
+                    <!-- Hidden gems will be dynamically added here -->
+                </div>
+            </section>
+
+            <!-- Local Guides Section -->
+            <section class="local-guides-section">
+                <div class="section-header">
+                    <h2>Connect with Local Guides</h2>
+                    <a href="local_guides.html" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="guides-container" id="localGuides">
+                    <!-- Local guides will be dynamically added here -->
+                </div>
+            </section>
+
+            <!-- Cultural Calendar Section -->
+            <section class="cultural-calendar-section">
+                <div class="section-header">
+                    <h2>Cultural Calendar</h2>
+                    <p>Upcoming festivals and cultural events</p>
+                </div>
+                <div class="calendar-container" id="culturalCalendar">
+                    <!-- Calendar events will be dynamically added here -->
+                </div>
+            </section>
+
+            <!-- Chat Assistant Preview -->
+            <section class="chat-assistant-preview">
+                <div class="chat-preview">
+                    <h2>AI Chat Assistant</h2>
+                    <p>Ask anything about your destination</p>
+                    <div class="chat-example">
+                        <div class="chat-message user">
+                            <p>What are the best times to visit Kyoto?</p>
+                        </div>
+                        <div class="chat-message ai">
+                            <p>The best times to visit Kyoto are during spring (March to May) for cherry blossoms and fall (October to November) for autumn colors. These seasons offer pleasant weather and stunning natural scenery.</p>
+                        </div>
+                    </div>
+                    <a href="chat_assistant.html" class="chat-button">Start Chatting <i class="fas fa-comment-dots"></i></a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Translator Modal -->
+    <div class="translator-modal" id="translatorModal">
+        <div class="translator-content">
+            <div class="translator-header">
+                <h3>Universal Translator</h3>
+                <button class="close-translator"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="translator-body">
+                <textarea placeholder="Enter text to translate..."></textarea>
+                <div class="language-selector">
+                    <select id="targetLanguage">
+                        <option value="en">English</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="ja">Japanese</option>
+                        <option value="zh">Chinese</option>
+                        <option value="hi">Hindi</option>
+                        <option value="ar">Arabic</option>
+                    </select>
+                    <button class="translate-btn">Translate</button>
+                    <button class="dictate-btn"><i class="fas fa-microphone"></i></button>
+                </div>
+                <div class="translation-result">
+                    <p>Translation will appear here...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p>Getting AI recommendations...</p>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

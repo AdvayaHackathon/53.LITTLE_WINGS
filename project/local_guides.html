@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Guides - AI Tourism Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="local_guides.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-container">
+                <h1>AI Tourism</h1>
+                <p>Discover with AI</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-compass"></i> Explore</a></li>
+                    <li><a href="trip_planner.html"><i class="fas fa-route"></i> Trip Planner</a></li>
+                    <li><a href="chat_assistant.html"><i class="fas fa-comments"></i> Chat Assistant</a></li>
+                    <li><a href="hidden_gems.html"><i class="fas fa-gem"></i> Hidden Gems</a></li>
+                    <li><a href="local_guides.html" class="active"><i class="fas fa-user-friends"></i> Local Guides</a></li>
+                    <li><a href="#saved-places"><i class="fas fa-bookmark"></i> Saved Places</a></li>
+                </ul>
+            </nav>
+            <div class="translator-container">
+                <div class="translator-circle">
+                    <i class="fas fa-language"></i>
+                </div>
+                <p>Translator</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navigation Bar -->
+            <nav class="top-nav">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search for local guides...">
+                </div>
+                <div class="user-actions">
+                    <div class="user-profile">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User Profile">
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Local Guides Header -->
+            <div class="page-header">
+                <h1>Connect with Local Guides</h1>
+                <p>Discover authentic experiences with knowledgeable locals</p>
+            </div>
+
+            <!-- Filters Section -->
+            <div class="filters-section">
+                <div class="filter-group">
+                    <label>Destination</label>
+                    <select id="destinationFilter">
+                        <option value="all">All Destinations</option>
+                        <option value="kyoto" selected>Kyoto, Japan</option>
+                        <option value="santorini">Santorini, Greece</option>
+                        <option value="machu-picchu">Machu Picchu, Peru</option>
+                        <option value="venice">Venice, Italy</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Expertise</label>
+                    <div class="tag-filters">
+                        <button class="filter-tag active" data-filter="all">All</button>
+                        <button class="filter-tag" data-filter="culture">Culture</button>
+                        <button class="filter-tag" data-filter="food">Food</button>
+                        <button class="filter-tag" data-filter="history">History</button>
+                        <button class="filter-tag" data-filter="nature">Nature</button>
+                        <button class="filter-tag" data-filter="photography">Photography</button>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <label>Sort By</label>
+                    <select id="sortFilter">
+                        <option value="recommended">Recommended</option>
+                        <option value="rating">Highest Rated</option>
+                        <option value="experience">Most Experienced</option>
+                        <option value="price">Price: Low to High</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Featured Guides -->
+            <section class="featured-guides-section">
+                <h2>Featured Local Guides</h2>
+                <div class="featured-guides" id="featuredGuides">
+                    <!-- Featured guides will be dynamically added here -->
+                </div>
+            </section>
+
+            <!-- All Guides Grid -->
+            <section class="all-guides-section">
+                <h2>All Local Guides</h2>
+                <div class="guides-grid" id="guidesGrid">
+                    <!-- Guides will be dynamically added here -->
+                </div>
+            </section>
+
+            <!-- AI Guide Matching -->
+            <section class="ai-matching-section">
+                <div class="ai-matching-box">
+                    <div class="ai-matching-header">
+                        <i class="fas fa-robot"></i>
+                        <h2>AI Guide Matching</h2>
+                    </div>
+                    <p>Let our AI find the perfect local guide based on your interests and preferences.</p>
+                    <div class="matching-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="interestsInput">What are you interested in?</label>
+                                <input type="text" id="interestsInput" placeholder="e.g., traditional crafts, local cuisine, hidden temples">
+                            </div>
+                            <div class="form-group">
+                                <label for="tripTypeInput">What type of experience are you looking for?</label>
+                                <select id="tripTypeInput">
+                                    <option value="private">Private Tour</option>
+                                    <option value="small-group">Small Group (2-5 people)</option>
+                                    <option value="family">Family-friendly</option>
+                                    <option value="photography">Photography-focused</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="durationInput">Duration</label>
+                                <select id="durationInput">
+                                    <option value="half-day">Half Day (4 hours)</option>
+                                    <option value="full-day">Full Day (8 hours)</option>
+                                    <option value="multi-day">Multi-day</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="languageInput">Preferred Language</label>
+                                <select id="languageInput">
+                                    <option value="english">English</option>
+                                    <option value="japanese">Japanese</option>
+                                    <option value="spanish">Spanish</option>
+                                    <option value="french">French</option>
+                                    <option value="chinese">Chinese</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button id="findMatchBtn" class="find-match-btn">Find My Perfect Guide</button>
+                    </div>
+                    <div class="matching-results" id="matchingResults">
+                        <!-- AI matching results will appear here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Become a Guide -->
+            <section class="become-guide-section">
+                <div class="become-guide-box">
+                    <div class="become-guide-content">
+                        <h2>Share Your Local Knowledge</h2>
+                        <p>Are you passionate about your city? Join our community of local guides and share your unique perspective with travelers from around the world.</p>
+                        <ul class="benefits-list">
+                            <li><i class="fas fa-check-circle"></i> Set your own schedule and prices</li>
+                            <li><i class="fas fa-check-circle"></i> Create custom experiences based on your expertise</li>
+                            <li><i class="fas fa-check-circle"></i> Connect with travelers who share your interests</li>
+                            <li><i class="fas fa-check-circle"></i> Earn additional income doing what you love</li>
+                        </ul>
+                        <button class="become-guide-btn">Become a Local Guide</button>
+                    </div>
+                    <div class="become-guide-image">
+                        <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186" alt="Local guide showing tourists around">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="testimonials-section">
+                <h2>What Travelers Say</h2>
+                <div class="testimonials-slider" id="testimonials">
+                    <!-- Testimonials will be dynamically added here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Translator Modal -->
+    <div class="translator-modal" id="translatorModal">
+        <div class="translator-content">
+            <div class="translator-header">
+                <h3>Universal Translator</h3>
+                <button class="close-translator"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="translator-body">
+                <textarea placeholder="Enter text to translate..."></textarea>
+                <div class="language-selector">
+                    <select id="targetLanguage">
+                        <option value="en">English</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="ja">Japanese</option>
+                        <option value="zh">Chinese</option>
+                        <option value="hi">Hindi</option>
+                        <option value="ar">Arabic</option>
+                    </select>
+                    <button class="translate-btn">Translate</button>
+                    <button class="dictate-btn"><i class="fas fa-microphone"></i></button>
+                </div>
+                <div class="translation-result">
+                    <p>Translation will appear here...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Guide Detail Modal -->
+    <div class="guide-detail-modal" id="guideDetailModal">
+        <div class="guide-detail-content">
+            <button class="close-detail"><i class="fas fa-times"></i></button>
+            <div class="guide-detail-body" id="guideDetailBody">
+                <!-- Guide details will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p>Finding your perfect guide...</p>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="local_guides.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidden Gems - AI Tourism Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="hidden_gems.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-container">
+                <h1>AI Tourism</h1>
+                <p>Discover with AI</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-compass"></i> Explore</a></li>
+                    <li><a href="trip_planner.html"><i class="fas fa-route"></i> Trip Planner</a></li>
+                    <li><a href="chat_assistant.html"><i class="fas fa-comments"></i> Chat Assistant</a></li>
+                    <li><a href="hidden_gems.html" class="active"><i class="fas fa-gem"></i> Hidden Gems</a></li>
+                    <li><a href="local_guides.html"><i class="fas fa-user-friends"></i> Local Guides</a></li>
+                    <li><a href="#saved-places"><i class="fas fa-bookmark"></i> Saved Places</a></li>
+                </ul>
+            </nav>
+            <div class="translator-container">
+                <div class="translator-circle">
+                    <i class="fas fa-language"></i>
+                </div>
+                <p>Translator</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navigation Bar -->
+            <nav class="top-nav">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search for hidden gems...">
+                </div>
+                <div class="user-actions">
+                    <div class="user-profile">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User Profile">
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Hidden Gems Header -->
+            <div class="page-header">
+                <h1>Discover Hidden Gems</h1>
+                <p>Explore off-the-beaten-path locations known only to locals</p>
+            </div>
+
+            <!-- Filters Section -->
+            <div class="filters-section">
+                <div class="filter-group">
+                    <label>Destination</label>
+                    <select id="destinationFilter">
+                        <option value="all">All Destinations</option>
+                        <option value="kyoto" selected>Kyoto, Japan</option>
+                        <option value="santorini">Santorini, Greece</option>
+                        <option value="machu-picchu">Machu Picchu, Peru</option>
+                        <option value="venice">Venice, Italy</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Category</label>
+                    <div class="tag-filters">
+                        <button class="filter-tag active" data-filter="all">All</button>
+                        <button class="filter-tag" data-filter="nature">Nature</button>
+                        <button class="filter-tag" data-filter="cultural">Cultural</button>
+                        <button class="filter-tag" data-filter="food">Food</button>
+                        <button class="filter-tag" data-filter="viewpoint">Viewpoint</button>
+                        <button class="filter-tag" data-filter="historical">Historical</button>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <label>Sort By</label>
+                    <select id="sortFilter">
+                        <option value="recommended">Recommended</option>
+                        <option value="rating">Highest Rated</option>
+                        <option value="popularity">Popularity</option>
+                        <option value="distance">Distance</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Hidden Gems Grid -->
+            <div class="gems-grid" id="gemsGrid">
+                <!-- Hidden gems will be dynamically added here -->
+            </div>
+
+            <!-- AI Recommendation Section -->
+            <div class="ai-recommendation-box">
+                <div class="ai-recommendation-header">
+                    <i class="fas fa-robot"></i>
+                    <h2>AI-Powered Recommendations</h2>
+                </div>
+                <p>Looking for more personalized hidden gem recommendations? Tell us your preferences and we'll find the perfect spots for you.</p>
+                <div class="recommendation-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="gemPreferences">What are you interested in?</label>
+                            <input type="text" id="gemPreferences" placeholder="e.g., quiet temples, local cafes, sunset views">
+                        </div>
+                        <div class="form-group">
+                            <label for="gemTimeAvailable">How much time do you have?</label>
+                            <select id="gemTimeAvailable">
+                                <option value="1-2">1-2 hours</option>
+                                <option value="half-day">Half day</option>
+                                <option value="full-day">Full day</option>
+                                <option value="multi-day">Multiple days</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button id="getGemRecommendations" class="recommend-btn">Get AI Recommendations</button>
+                </div>
+                <div class="ai-results" id="gemAiResults">
+                    <!-- AI recommendations will appear here -->
+                </div>
+            </div>
+
+            <!-- Map Section -->
+            <div class="map-section">
+                <h2>Explore Hidden Gems on the Map</h2>
+                <div class="map-container" id="hiddenGemsMap"></div>
+            </div>
+
+            <!-- Community Contributions -->
+            <div class="community-section">
+                <h2>Community Contributions</h2>
+                <p>These hidden gems were shared by fellow travelers. Have you discovered a special place? Share it with the community!</p>
+                <button class="contribute-btn"><i class="fas fa-plus"></i> Share Your Hidden Gem</button>
+                <div class="community-gems" id="communityGems">
+                    <!-- Community gems will be dynamically added here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Translator Modal -->
+    <div class="translator-modal" id="translatorModal">
+        <div class="translator-content">
+            <div class="translator-header">
+                <h3>Universal Translator</h3>
+                <button class="close-translator"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="translator-body">
+                <textarea placeholder="Enter text to translate..."></textarea>
+                <div class="language-selector">
+                    <select id="targetLanguage">
+                        <option value="en">English</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="ja">Japanese</option>
+                        <option value="zh">Chinese</option>
+                        <option value="hi">Hindi</option>
+                        <option value="ar">Arabic</option>
+                    </select>
+                    <button class="translate-btn">Translate</button>
+                    <button class="dictate-btn"><i class="fas fa-microphone"></i></button>
+                </div>
+                <div class="translation-result">
+                    <p>Translation will appear here...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p>Finding hidden gems for you...</p>
+    </div>
+
+    <!-- Gem Detail Modal -->
+    <div class="gem-detail-modal" id="gemDetailModal">
+        <div class="gem-detail-content">
+            <button class="close-detail"><i class="fas fa-times"></i></button>
+            <div class="gem-detail-body" id="gemDetailBody">
+                <!-- Gem details will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="hidden_gems.js"></script>
+</body>
+</html>

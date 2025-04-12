@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Planner - AI Tourism Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="trip_planner.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-container">
+                <h1>AI Tourism</h1>
+                <p>Discover with AI</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-compass"></i> Explore</a></li>
+                    <li><a href="trip_planner.html" class="active"><i class="fas fa-route"></i> Trip Planner</a></li>
+                    <li><a href="chat_assistant.html"><i class="fas fa-comments"></i> Chat Assistant</a></li>
+                    <li><a href="hidden_gems.html"><i class="fas fa-gem"></i> Hidden Gems</a></li>
+                    <li><a href="local_guides.html"><i class="fas fa-user-friends"></i> Local Guides</a></li>
+                    <li><a href="#saved-places"><i class="fas fa-bookmark"></i> Saved Places</a></li>
+                </ul>
+            </nav>
+            <div class="translator-container">
+                <div class="translator-circle">
+                    <i class="fas fa-language"></i>
+                </div>
+                <p>Translator</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navigation Bar -->
+            <nav class="top-nav">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search for destinations, experiences...">
+                </div>
+                <div class="user-actions">
+                    <div class="user-profile">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User Profile">
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Trip Planner Header -->
+            <div class="planner-header">
+                <h1>Plan Your Perfect Trip with AI</h1>
+                <p>Create a personalized itinerary with AI assistance</p>
+            </div>
+
+            <!-- Trip Planner Interface -->
+            <div class="planner-container">
+                <div class="planner-sidebar">
+                    <div class="trip-form">
+                        <h2>Trip Details</h2>
+                        
+                        <div class="form-group">
+                            <label for="tripName">Trip Name</label>
+                            <input type="text" id="tripName" placeholder="e.g., Summer in Kyoto">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="destination">Destination</label>
+                            <input type="text" id="destination" placeholder="Where are you going?">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="tripDates">Travel Dates</label>
+                            <input type="text" id="tripDates" placeholder="Select date range">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Trip Preferences</label>
+                            <div class="preference-tags">
+                                <button class="pref-tag" data-pref="cultural">Cultural</button>
+                                <button class="pref-tag" data-pref="nature">Nature</button>
+                                <button class="pref-tag" data-pref="historical">Historical</button>
+                                <button class="pref-tag" data-pref="food">Food & Dining</button>
+                                <button class="pref-tag" data-pref="shopping">Shopping</button>
+                                <button class="pref-tag" data-pref="relaxation">Relaxation</button>
+                                <button class="pref-tag" data-pref="adventure">Adventure</button>
+                                <button class="pref-tag" data-pref="family">Family-friendly</button>
+                                <button class="pref-tag" data-pref="budget">Budget-friendly</button>
+                                <button class="pref-tag" data-pref="luxury">Luxury</button>
+                                <button class="pref-tag" data-pref="hidden-gems">Hidden Gems</button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Accommodation Type</label>
+                            <div class="accommodation-options">
+                                <label class="radio-option">
+                                    <input type="radio" name="accommodation" value="hotel">
+                                    <span>Hotel</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="accommodation" value="hostel">
+                                    <span>Hostel</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="accommodation" value="apartment">
+                                    <span>Apartment</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="accommodation" value="homestay">
+                                    <span>Homestay</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="budget">Budget Range</label>
+                            <select id="budget">
+                                <option value="budget">Budget ($)</option>
+                                <option value="moderate">Moderate ($$)</option>
+                                <option value="luxury">Luxury ($$$)</option>
+                            </select>
+                        </div>
+                        
+                        <button id="generatePlan" class="generate-btn">Generate AI Plan</button>
+                    </div>
+                    
+                    <div class="saved-places">
+                        <h2>Saved Places</h2>
+                        <div class="saved-places-list" id="savedPlacesList">
+                            <!-- Saved places will be dynamically added here -->
+                            <div class="empty-state">
+                                <i class="fas fa-bookmark"></i>
+                                <p>No saved places yet</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="planner-main">
+                    <div class="planner-tabs">
+                        <button class="tab-btn active" data-tab="map">Map View</button>
+                        <button class="tab-btn" data-tab="itinerary">Itinerary</button>
+                        <button class="tab-btn" data-tab="suggestions">AI Suggestions</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="mapTab">
+                            <div class="map-container" id="plannerMap"></div>
+                            <div class="map-controls">
+                                <div class="map-filters">
+                                    <button class="filter-btn active" data-filter="all">All</button>
+                                    <button class="filter-btn" data-filter="attractions">Attractions</button>
+                                    <button class="filter-btn" data-filter="restaurants">Restaurants</button>
+                                    <button class="filter-btn" data-filter="hotels">Hotels</button>
+                                    <button class="filter-btn" data-filter="shopping">Shopping</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane" id="itineraryTab">
+                            <div class="itinerary-container">
+                                <div class="empty-state">
+                                    <i class="fas fa-route"></i>
+                                    <p>Generate a plan to see your itinerary</p>
+                                </div>
+                                <!-- Itinerary will be dynamically added here -->
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane" id="suggestionsTab">
+                            <div class="suggestions-container">
+                                <div class="empty-state">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <p>Generate a plan to see AI suggestions</p>
+                                </div>
+                                <!-- Suggestions will be dynamically added here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Translator Modal -->
+    <div class="translator-modal" id="translatorModal">
+        <div class="translator-content">
+            <div class="translator-header">
+                <h3>Universal Translator</h3>
+                <button class="close-translator"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="translator-body">
+                <textarea placeholder="Enter text to translate..."></textarea>
+                <div class="language-selector">
+                    <select id="targetLanguage">
+                        <option value="en">English</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="ja">Japanese</option>
+                        <option value="zh">Chinese</option>
+                        <option value="hi">Hindi</option>
+                        <option value="ar">Arabic</option>
+                    </select>
+                    <button class="translate-btn">Translate</button>
+                    <button class="dictate-btn"><i class="fas fa-microphone"></i></button>
+                </div>
+                <div class="translation-result">
+                    <p>Translation will appear here...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p>Generating your AI-powered itinerary...</p>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="trip_planner.js"></script>
+</body>
+</html>

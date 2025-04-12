@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Assistant - AI Tourism Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="chat_assistant.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-container">
+                <h1>AI Tourism</h1>
+                <p>Discover with AI</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-compass"></i> Explore</a></li>
+                    <li><a href="trip_planner.html"><i class="fas fa-route"></i> Trip Planner</a></li>
+                    <li><a href="chat_assistant.html" class="active"><i class="fas fa-comments"></i> Chat Assistant</a></li>
+                    <li><a href="hidden_gems.html"><i class="fas fa-gem"></i> Hidden Gems</a></li>
+                    <li><a href="local_guides.html"><i class="fas fa-user-friends"></i> Local Guides</a></li>
+                    <li><a href="#saved-places"><i class="fas fa-bookmark"></i> Saved Places</a></li>
+                </ul>
+            </nav>
+            <div class="translator-container">
+                <div class="translator-circle">
+                    <i class="fas fa-language"></i>
+                </div>
+                <p>Translator</p>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navigation Bar -->
+            <nav class="top-nav">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search for destinations, experiences...">
+                </div>
+                <div class="user-actions">
+                    <div class="user-profile">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User Profile">
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Chat Interface -->
+            <div class="chat-container">
+                <div class="chat-sidebar">
+                    <div class="chat-header">
+                        <h2>Chat Assistant</h2>
+                        <button class="new-chat-btn"><i class="fas fa-plus"></i> New Chat</button>
+                    </div>
+                    <div class="chat-history">
+                        <div class="history-item active">
+                            <div class="history-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="history-content">
+                                <h3>Kyoto Travel Tips</h3>
+                                <p>Started 2 hours ago</p>
+                            </div>
+                        </div>
+                        <div class="history-item">
+                            <div class="history-icon"><i class="fas fa-utensils"></i></div>
+                            <div class="history-content">
+                                <h3>Japanese Cuisine</h3>
+                                <p>Started yesterday</p>
+                            </div>
+                        </div>
+                        <div class="history-item">
+                            <div class="history-icon"><i class="fas fa-train"></i></div>
+                            <div class="history-content">
+                                <h3>Transportation in Japan</h3>
+                                <p>Started 3 days ago</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-settings">
+                        <button class="settings-btn"><i class="fas fa-cog"></i> Settings</button>
+                        <button class="help-btn"><i class="fas fa-question-circle"></i> Help</button>
+                    </div>
+                </div>
+                <div class="chat-main">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message-date">Today</div>
+                        
+                        <div class="message ai">
+                            <div class="message-avatar">
+                                <img src="https://i.imgur.com/7QFtG6q.png" alt="AI">
+                            </div>
+                            <div class="message-content">
+                                <p>Hello! I'm your AI travel assistant. How can I help you plan your trip to Kyoto?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <textarea placeholder="Type your message here..." id="messageInput"></textarea>
+                        <div class="input-actions">
+                            <button class="attach-btn"><i class="fas fa-paperclip"></i></button>
+                            <button class="send-btn" id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-info">
+                    <div class="info-header">
+                        <h3>Kyoto Information</h3>
+                    </div>
+                    <div class="info-content">
+                        <div class="info-section">
+                            <h4>Quick Facts</h4>
+                            <ul class="fact-list">
+                                <li><strong>Population:</strong> 1.5 million</li>
+                                <li><strong>Language:</strong> Japanese</li>
+                                <li><strong>Currency:</strong> Japanese Yen (¥)</li>
+                                <li><strong>Time Zone:</strong> JST (UTC+9)</li>
+                                <li><strong>Climate:</strong> Humid subtropical</li>
+                            </ul>
+                        </div>
+                        <div class="info-section">
+                            <h4>Popular Attractions</h4>
+                            <div class="attraction-list">
+                                <div class="attraction-item">
+                                    <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e" alt="Kinkaku-ji">
+                                    <span>Kinkaku-ji</span>
+                                </div>
+                                <div class="attraction-item">
+                                    <img src="https://images.unsplash.com/photo-1478436127897-769e1b3f0f36" alt="Fushimi Inari">
+                                    <span>Fushimi Inari</span>
+                                </div>
+                                <div class="attraction-item">
+                                    <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26" alt="Arashiyama">
+                                    <span>Arashiyama</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info-section">
+                            <h4>Suggested Queries</h4>
+                            <div class="query-suggestions">
+                                <button class="query-btn">Best local food in Kyoto?</button>
+                                <button class="query-btn">How to use public transport?</button>
+                                <button class="query-btn">Day trips from Kyoto?</button>
+                                <button class="query-btn">Cultural etiquette tips?</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Translator Modal -->
+    <div class="translator-modal" id="translatorModal">
+        <div class="translator-content">
+            <div class="translator-header">
+                <h3>Universal Translator</h3>
+                <button class="close-translator"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="translator-body">
+                <textarea placeholder="Enter text to translate..."></textarea>
+                <div class="language-selector">
+                    <select id="targetLanguage">
+                        <option value="en">English</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="ja">Japanese</option>
+                        <option value="zh">Chinese</option>
+                        <option value="hi">Hindi</option>
+                        <option value="ar">Arabic</option>
+                    </select>
+                    <button class="translate-btn">Translate</button>
+                    <button class="dictate-btn"><i class="fas fa-microphone"></i></button>
+                </div>
+                <div class="translation-result">
+                    <p>Translation will appear here...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p>AI is thinking...</p>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="chat_assistant.js"></script>
+</body>
+</html>

@@ -1,0 +1,623 @@
+/* Hidden Gems Specific Styles */
+
+/* Page Header */
+.page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+/* Filters Section */
+.filters-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+.filter-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.filter-group select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.tag-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.filter-tag {
+    background-color: var(--light-color);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filter-tag:hover {
+    background-color: #e9ecef;
+}
+
+.filter-tag.active {
+    background-color: var(--secondary-color);
+    color: white;
+    border-color: var(--secondary-color);
+}
+
+/* Hidden Gems Grid */
+.gems-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.gem-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+}
+
+.gem-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.gem-image {
+    height: 200px;
+    position: relative;
+}
+
+.gem-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gem-category {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.gem-content {
+    padding: 1.5rem;
+}
+
+.gem-content h3 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.gem-content p {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.gem-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.gem-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--gold-color);
+    font-weight: 500;
+}
+
+.gem-rating i {
+    font-size: 0.9rem;
+}
+
+.gem-location {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.gem-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.gem-tag {
+    background-color: var(--light-color);
+    border-radius: 20px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+    color: var(--text-color);
+}
+
+.gem-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.gem-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.view-details-btn {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.view-details-btn:hover {
+    background-color: #2980b9;
+}
+
+.save-gem-btn {
+    background-color: var(--light-color);
+    color: var(--text-color);
+}
+
+.save-gem-btn:hover {
+    background-color: #e9ecef;
+}
+
+/* AI Recommendation Box */
+.ai-recommendation-box {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 3rem;
+}
+
+.ai-recommendation-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.ai-recommendation-header i {
+    font-size: 2rem;
+    color: var(--secondary-color);
+}
+
+.ai-recommendation-header h2 {
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.ai-recommendation-box p {
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.recommendation-form {
+    margin-bottom: 1.5rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    flex: 1;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.recommend-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+}
+
+.recommend-btn:hover {
+    background-color: #2980b9;
+}
+
+.ai-results {
+    display: none;
+    background-color: var(--light-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+}
+
+.ai-results.active {
+    display: block;
+}
+
+.ai-gem-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.ai-gem-card:last-child {
+    margin-bottom: 0;
+}
+
+.ai-gem-card h3 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.ai-gem-card p {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+.ai-gem-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.ai-gem-tag {
+    background-color: var(--light-color);
+    border-radius: 20px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+    color: var(--text-color);
+}
+
+/* Map Section */
+.map-section {
+    margin-bottom: 3rem;
+}
+
+.map-section h2 {
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+.map-container {
+    height: 500px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+/* Community Section */
+.community-section {
+    margin-bottom: 3rem;
+}
+
+.community-section h2 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.community-section p {
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.contribute-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    transition: var(--transition);
+}
+
+.contribute-btn:hover {
+    background-color: #1a2530;
+}
+
+.community-gems {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* Gem Detail Modal */
+.gem-detail-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+.gem-detail-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.gem-detail-content {
+    background-color: white;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close-detail {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    z-index: 10;
+    transition: var(--transition);
+}
+
+.close-detail:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.gem-detail-body {
+    padding: 0;
+}
+
+.gem-detail-image {
+    height: 300px;
+    position: relative;
+}
+
+.gem-detail-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gem-detail-info {
+    padding: 2rem;
+}
+
+.gem-detail-info h2 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.gem-detail-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.gem-detail-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.gem-detail-description {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.gem-detail-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.gem-detail-tag {
+    background-color: var(--light-color);
+    border-radius: 20px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+    color: var(--text-color);
+}
+
+.gem-detail-map {
+    height: 300px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.gem-detail-tips {
+    background-color: var(--light-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.gem-detail-tips h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.gem-detail-tips ul {
+    padding-left: 1.5rem;
+}
+
+.gem-detail-tips li {
+    margin-bottom: 0.5rem;
+}
+
+.gem-detail-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.gem-detail-btn {
+    flex: 1;
+    padding: 0.8rem;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+}
+
+.save-detail-btn {
+    background-color: var(--light-color);
+    color: var(--text-color);
+}
+
+.save-detail-btn:hover {
+    background-color: #e9ecef;
+}
+
+.directions-btn {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.directions-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .form-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .gem-detail-image {
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .filters-section {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .filter-group {
+        width: 100%;
+    }
+    
+    .gems-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .community-gems {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .gems-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .community-gems {
+        grid-template-columns: 1fr;
+    }
+    
+    .gem-detail-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .gem-detail-actions {
+        flex-direction: column;
+    }
+}
